@@ -5,21 +5,23 @@ A repeat of the analysis on the effect of social housing on overall well-being o
 This analysis repeats and improves on previous work by the Social Investment Agency (SIA) to measure how placement in social housing impacts the wellbeing of people. In November 2018 we released a report **Measuring the wellbeing impacts of public policy: social housing**, and the accompanying GitHub repository **social-housing-and-wellbeing**. The analysis behind this previous report has been repeated with several improvements, including:
 
 * Wellbeing indicators from the 2016 wave of the New Zealand General Social Survey (NZGSS) are used following its addition into the Integrated Data Infrastructure (IDI).
-* Refinements to the spine linking process, using address informaiton to resolve orphan identities, provide a higher link rate for the NZGSS respondents.
+* Refinements to the spine linking process, using address information to resolve orphan identities, provide a higher link rate for the NZGSS respondents.
 
-Both improvements increase the sample size, reducing uncertainty, and making the results and conclusions more robust. The code from this repositry relates to the SIA report **Measuring the impact of social housing placement on wellbeing: Evidence from linked survey and administrative data**.
+Both improvements increase the sample size, reducing uncertainty, and making the results and conclusions more robust. The code from this repository relates to the SIA report **Measuring the impact of social housing placement on wellbeing: Evidence from linked survey and administrative data**.
 
 ## Features
-This repositry contains several code features that may be of interest to researchers, even if they do not wish to run the entire analysis:
+This repository contains several code features that may be of interest to researchers, even if they do not wish to run the entire analysis:
 
 * Stats NZ provides survey weights for the GSS calculated for the entire respondent population. When working in the IDI a reweighting to account for imperfect linkage is recommended. `2_of_rewt_gss_person_replicates.R` contains our methodology for updating the survey weights to account for non-linkage.
-* Some identities can not be fully linked, resulting in orphan identities (partial identities that have not been lnked to the spine - the list of core identities). `si_improve_gss_linkage.sas` contains our methodology for identifying orphan identities and reconnecting them to the spine.
+* Some identities can not be fully linked, resulting in orphan identities (partial identities that have not been linked to the spine - the list of core identities). `si_improve_gss_linkage.sas` contains our methodology for identifying orphan identities and reconnecting them to the spine.
 * The IDI contains 5 waves of the NZGSS. Due to changes in the survey over time, combining these waves into a single dataset requires some cleaning. The code scripts `si_create_of_gss_variables.sas` contains the core of our methodology to combine these five waves into a single dataset.
 
 ## Dependencies
 It is necessary to have an IDI project if you wish to run the code. Visit the Stats NZ website for more information about this. This analysis has been developed for the IDI_Clean_20181020 refresh of the IDI. As changes in database structure can occur between refreshes, access to, and use of, this refresh should be considered a dependency for the purpose of executing the code as it was intended.
 
-Code dependencies for this repositry may include the `social_investment_analytical_layer (SIAL)`, the `social_investment_data_foundation (SIDF)`, and the `SIAtoolbox`. Of these, only the SIAL would need to be run prior to this analysis. Please see the SIAL repositry for more detail and instructions. Any dependency on the SIDF and tool box are via SAS macros and R functions contained in those repositries.
+Code dependencies for this repository include the `social_investment_analytical_layer (SIAL)`, the `social_investment_data_foundation (SIDF)`, and the `SIAtoolbox`. Of these, only the SIAL would need to be run prior to this analysis. Please see the SIAL repository for more detail and instructions. Any dependency on the SIDF and tool box are via SAS macros and R functions contained in those repositories.
+
+The R code makes use of several publicly available R packages. The version of some of these packages may be important. This analysis was conducted using `dplyr` version 0.7.2, `srvyr` version 0.2.2 and `rlang` version 0.2.1.
 
 ## Folder descriptions
 This repositry contains all the core code to assemble the data and run the analysis.
