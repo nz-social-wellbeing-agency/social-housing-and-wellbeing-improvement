@@ -331,39 +331,3 @@ quit;
 	si_write_table_out=&si_sandpit_libname..of_gss_ind_variables_sh3
 	,si_cluster_index_flag=True,si_index_cols=%bquote(&si_id_col.)
 	);
-
-
-/* Testing the scores for match with original*/
-/*TITLE1 "SF12 V2 - OVERALL DESCRIPTIVE STATISTICS ON SCALE SCORES"; RUN;*/
-/*PROC MEANS DATA=TEMP1; */
-/*VAR PF PF_T  */
-/*    RP RP_T  */
-/*    BP BP_T */
-/*    GH GH_T */
-/*    VT VT_T */
-/*    SF SF_T */
-/*    RE RE_T */
-/*    MH MH_T */
-/*    AGG_PHYS AGG_MENT*/
-/*	US_AGG_PHYS US_AGG_MENT;*/
-/*RUN;*/
-/**/
-/*proc sql;*/
-/*create table temp3 as */
-/*	select * from _temp_sf12 */
-/*	where gss_pq_collection_code ne 'GSS2008' and ((agg_phys ne physical_status) or (agg_ment ne mental_status))*/
-/*	union all */
-/*	select * from _temp_sf12 */
-/*	where gss_pq_collection_code = 'GSS2008' and ((us_agg_phys ne physical_status) or (us_agg_ment ne mental_status));*/
-/*quit;*/
-/**/
-/*proc sort data=_temp_sf12; by gss_pq_collection_code;*/
-/*proc means data=_temp_sf12(where=(physical_status between 0 and 100) keep=gss_pq_collection_code AGG_PHYS US_AGG_PHYS physical_status);*/
-/*by gss_pq_collection_code;run;*/
-/**/
-/*proc means data=_temp_sf12(where=(mental_status between 0 and 100) keep=gss_pq_collection_code AGG_MENT US_AGG_MENT mental_status);*/
-/*by gss_pq_collection_code;run;*/
-/**/
-/*proc sql;*/
-/*select * from temp3 where abs(ment_orig_calc_diff ) > 1;*/
-/*quit;*/

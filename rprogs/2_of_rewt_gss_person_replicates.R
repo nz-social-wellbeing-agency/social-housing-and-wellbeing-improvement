@@ -200,18 +200,6 @@ conn <- odbcDriverConnect(connstr)
 sqlSave(conn, all_weights_df, tablename = "[DL-MAA2016-15].of_gss_calibrated_weights_sh3", verbose = TRUE,
         rownames = FALSE, fast=FALSE)
 
-# Read the dataset if recalibration not run, and it already exists in the DB.
-# all_weights_df <- SIAtoolbox::read_sql_table("select *
-#                                      from IDI_Sandpit.[DL-MAA2016-15].[of_gss_calibrated_weights_sh]",
-#                                      connstr, string = TRUE)
-
-
-
-
 # Remove unwanted datasets to free up memory
 rm(person_wave, person_linked_wave)
-
-
-
-
 

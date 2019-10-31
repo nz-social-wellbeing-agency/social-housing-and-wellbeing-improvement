@@ -862,22 +862,6 @@ proc sql;
 QUIT;
 
 
-/*proc sql;*/
-/*create table temp45 as */
-/*select  income_monthly_net, income_monthly_net_comp, abs(income_monthly_net - income_monthly_net_comp)  as diff from _temp_adminvars;*/
-/*quit;*/
-/*proc univariate data=temp45; var income_monthly_net income_monthly_net_comp;*/
-/*run;*/
-/**/
-/**/
-/*proc corr data=temp45 ;*/
-/*var income_monthly_net income_monthly_net_comp;*/
-/*run;*/
-/**/
-/*proc reg data=temp45 ;*/
-/*model income_monthly_net_comp = income_monthly_net;*/
-/*run;*/
-
 
 /* Replace NULLs in admin variables with 0 */
 proc stdize data=_temp_adminvars out=_temp_adminvars reponly missing=0;run;

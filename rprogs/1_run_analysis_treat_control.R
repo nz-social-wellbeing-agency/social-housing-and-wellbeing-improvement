@@ -192,13 +192,6 @@ glm <- glm(as.formula("hh_equi_income_net_b4 ~ as_at_age + age2 + snz_sex_code +
 print(summary(glm))
 # print(summary(lm.test))
 
-
-
-
-
-
-
-
 ################ analysis when dependent variable = treat_control_sen ################
 # runs the analysis against the explanotory variables:
 
@@ -224,8 +217,4 @@ reg_formulas <- cbind(
 )
 
 robust_glm_wrapper(reg_formulas, dataset, dependent_var)
-
-
-
-
 

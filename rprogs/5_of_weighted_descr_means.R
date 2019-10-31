@@ -125,31 +125,14 @@ for(wave in c("GSS2016","GSS2014","GSS2012","GSS2010","GSS2008") ) {
   
   # Save the summary table for later use
   univariate_list[[listcounter]] <- univariate_tbl
-  # univariate_tbl$wttotal <- rrn(as.integer(univariate_tbl$wttotal), 1000)
-  # univariate_tbl$unwttotal <- rrn(univariate_tbl$unwttotal, 3)
- # write.xlsx(as.data.frame(univariate_tbl) %>% mutate(wttotal = rrn(as.integer(univariate_tbl$wttotal), 1000)
-  #                                                    ,unwttotal = rrn(univariate_tbl$unwttotal, 3))
-  #             , file = "../output/univariate_desc_stats_rr_out.xlsx", sheetName = wave, row.names = FALSE,
-#              append = TRUE)
- # write.xlsx(as.data.frame(univariate_tbl), file = "../output/univariate_desc_stats_out.xlsx", sheetName = wave, row.names = FALSE,
- #            append = TRUE)
-  
-  
+
   ######## Bivariate Statistics at housing groups level- Weighted ########
   bivariate_tbl <- data.frame()
       for(k in 1:length(measurevars)){
           bivariate_tbl <- rbind(bivariate_tbl, bivariate_means_sh(measurevars[[k]] ))
       }
     
-      
-  
- # write.xlsx(as.data.frame(bivariate_tbl) %>% mutate(wttotal = rrn(as.integer(bivariate_tbl$wttotal), 1000)
-  #                                                   ,unwttotal = rrn(bivariate_tbl$unwttotal, 3))
- #            , file = "../output/bivariate_desc_stats_weighted_rr_out.xlsx", sheetName = wave, row.names = FALSE,
- #             append = TRUE)
- # write.xlsx(as.data.frame(bivariate_tbl), file = "../output/bivariate_desc_stats_weighted_out.xlsx", sheetName = wave, row.names = FALSE,
-#             append = TRUE)
-  
+
   # Save the summary table for later use
   bivariate_list[[listcounter]] <- bivariate_tbl
   

@@ -170,21 +170,6 @@ univariate_descr <- function(inputVar, weighted = TRUE){
   }
   
   
-  # tmp %>%
-  #   ggplot(aes(var, total)) +
-  #   geom_bar(stat = "identity", alpha = 0.6, fill = "#588D97", width = 0.5) +
-  #   geom_errorbar(aes(ymin = total_low, ymax = total_upp), width = 0.1, alpha = 0.6, size = 0.25) +
-  #   theme_sia() +
-  #   scale_y_continuous(labels = scales::comma) +
-  #   labs(x = rlang::quo_text(enquo_input)) +
-  #   theme(
-  #     text = element_text(size = 5)
-  #   ) +
-  #   scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10))
-  
-  # ggsave(filename = paste0(rlang::quo_text(enquo_input), ".png"), device = "png", path = "output/plots/no_as",
-  #        width = 6, height = 3)
-  
   return(tmp)
   
 }
@@ -227,35 +212,13 @@ bivariate_descr <- function(inputVar, inputVar2){
     )
     
     tmp <- left_join(tmp1, tmp2, by = c("var", "var_name", "var2", "var_name2"))
-  
-  # tmp %>%
-  #   ggplot(aes(var, mean)) +
-  #   geom_bar(stat = "identity", alpha = 0.6, fill = "#F47C20", width = 0.5) +
-  #   geom_errorbar(aes(ymin = mean_low, ymax = mean_upp), width = 0.1, alpha = 0.6, size = 0.25) +
-  #   theme_sia() +
-  #   scale_y_continuous(labels = scales::comma) +
-  #   labs(x = rlang::quo_text(enquo_input)) +
-  #   theme(
-  #     text = element_text(size = 5)
-  #   ) +
-  #   scale_x_discrete(labels = function(x) stringr::str_wrap(x, width = 10))
-  
-  # ggsave(filename = paste0(rlang::quo_text(enquo_input), "_", rlang::quo_text(enquo_input2), ".png"), 
-  #        device = "png", path = "output/plots/no_as", width = 3.5, height = 3)
-  
+
   return(tmp)
   
 }
 
 
 ####################################################################################################
-
-# Create stats for each wave
-# write.xlsx(cbind("Notes"=NA), file = "output/univariate_desc_stats.xlsx", sheetName = "Note_to_Stats", row.names = FALSE)
-# write.xlsx(cbind("Notes"=NA), file = "output/bivariate_housing_desc_stats_weighted.xlsx", sheetName = "Note_to_Stats", row.names = FALSE)
-# write.xlsx(cbind("Notes"=NA), file = "output/bivariate_housing_desc_stats_unweighted.xlsx", sheetName = "Note_to_Stats", row.names = FALSE)
-# write.xlsx(cbind("Notes"=NA), file = "output/bivariate_treat_desc_stats_unweighted.xlsx", sheetName = "Note_to_Stats", row.names = FALSE)
-# write.xlsx(cbind("Notes"=NA), file = "output/overall_desc_stats_unweighted.xlsx", sheetName = "Note_to_Stats", row.names = FALSE)
 
 # Declare lists and an iterator for storing intermediate datasets from each wave
 univariate_list <- list()
