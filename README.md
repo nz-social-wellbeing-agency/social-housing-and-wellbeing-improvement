@@ -9,6 +9,13 @@ This analysis repeats and improves on previous work by the Social Investment Age
 
 Both improvements increase the sample size, reducing uncertainty, and making the results and conclusions more robust. The code from this repositry relates to the SIA report **Measuring the impact of social housing placement on wellbeing: Evidence from linked survey and administrative data**.
 
+## Features
+This repositry contains several code features that may be of interest to researchers, even if they do not wish to run the entire analysis:
+
+* Stats NZ provides survey weights for the GSS calculated for the entire respondent population. When working in the IDI a reweighting to account for imperfect linkage is recommended. `2_of_rewt_gss_person_replicates.R` contains our methodology for updating the survey weights to account for non-linkage.
+* Some identities can not be fully linked, resulting in orphan identities (partial identities that have not been lnked to the spine - the list of core identities). `si_improve_gss_linkage.sas` contains our methodology for identifying orphan identities and reconnecting them to the spine.
+* The IDI contains 5 waves of the NZGSS. Due to changes in the survey over time, combining these waves into a single dataset requires some cleaning. The code scripts `si_create_of_gss_variables.sas` contains the core of our methodology to combine these five waves into a single dataset.
+
 ## Dependencies
 It is necessary to have an IDI project if you wish to run the code. Visit the Stats NZ website for more information about this. This analysis has been developed for the IDI_Clean_20181020 refresh of the IDI. As changes in database structure can occur between refreshes, access to, and use of, this refresh should be considered a dependency for the purpose of executing the code as it was intended.
 
