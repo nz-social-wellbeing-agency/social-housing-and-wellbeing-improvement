@@ -10,34 +10,15 @@ This analysis repeats and improves on previous work by the Social Investment Age
 Both improvements increase the sample size, reducing uncertainty, and making the results and conclusions more robust. The code from this repositry relates to the SIA report **Measuring the impact of social housing placement on wellbeing: Evidence from linked survey and administrative data**.
 
 ## Dependencies
-* It is necessary to have an IDI project if you wish to run the code. Visit the Stats NZ website for more information about this.
-* Code dependencies are captured via submodules in this repository. Currently the code dependencies for this repository are -
-	* `social_investment_analytical_layer (SIAL)` 
-	* `social_investment_data_foundation (SIDF)` 
-	* `SIAtoolbox`
+It is necessary to have an IDI project if you wish to run the code. Visit the Stats NZ website for more information about this. This analysis has been developed for the IDI_Clean_20181020 refresh of the IDI. As changes in database structure can occur between refreshes, access to, and use of, this refresh should be considered a dependency for the purpose of executing the code as it was intended.
 
-* Once the repository is downloaded and put into your IDI project folder, run the `social_investment_analytical_layer` scripts so that the all the SIAL tables are available for use in your database schema. Note when you create the SIAL tables the scripts will attempt to access to the following schemas in IDI_Clean (or the archives if you wish to use an older IDI refresh). 
-	* acc_clean
-	* cor_clean
-	* cyf_clean
-	* data
-	* dia_clean
-	* hnz_clean
-	* moe_clean
-	* moh_clean
-	* moj_clean
-	* msd_clean
-    * pol_clean
-	* security
-	* gss_clean
-* If there are specific schemas listed above that you don't have access to, the **SIAL** main script (after it finishes running) will give you a detailed report on which SIAL tables were not created and why.
-* Ensure that you have installed the `SIAtoolbox` library in R. Note that `SIAtoolbox` is not on the CRAN repository, and can be retrieved only from Github. Place this code in a folder in your IDI project, make sure you have the `devtools` package installed and loaded in R and then run `devtools::install("/path/to/file/SIAtoolbox")` in R.
+Code dependencies for this repositry may include the `social_investment_analytical_layer (SIAL)`, the `social_investment_data_foundation (SIDF)`, and the `SIAtoolbox`. Of these, only the SIAL would need to be run prior to this analysis. Please see the SIAL repositry for more detail and instructions. Any dependency on the SIDF and tool box are via SAS macros and R functions contained in those repositries.
 
 ## Folder descriptions
 This repositry contains all the core code to assemble the data and run the analysis.
 
-* **sasautos:** This folder contains SAS macros that are elsewhere.
-* **sasprogs:** This folder contains SAS programs. The main script that builds the dataset is located in here as well as the control file where analysis particular parameters are entered.
+* **sasautos:** This folder contains SAS macros that are used during the processing.
+* **sasprogs:** This folder contains SAS programs. The main script that builds the dataset is located in here as well as the control file where analysis parameters are entered.
 * **rprogs:** This folder contains all the necessary R scripts that are required to perform the analysis on the dataset created by the SAS code.
 * **sql:** Several auxiliary SQL scripts that create summary outputs for the final report are stored here.
 
@@ -48,13 +29,12 @@ This repositry contains all the core code to assemble the data and run the analy
 3. Open `sasprogs/si_main.sas` and change the `si_source_path` variable to your project folder directory. Once this is done, run the `si_main.sas` script, which will build the datasets that are needed to do the analysis.
 
 ### Step B: Data Preparation & Analysis
-There are 3 distinct streams of analysis for this project-
+There are 2 distinct streams of analysis for this project-
 
 **Survey-Weighted Descriptive Statistics**
 1. Start a new R session.
 
 2. Open up `rprogs/1_of_weighted_gss_analysis_wrapper.R`. Edit the working directory by modifying with path specified at the first line of this file. In addition, also edit the variable `schemaname` to the appropriate schema that you are using. This is a wrapper script that runs all steps involved for generating the weighted descriptive statistics for the analysis. The script performs a linking of the GSS survey data with the IDI Spine, and reweights the survey to account for records that are unlinked with the IDI Spine. A comparison test between the distribution of the GSS variables is also performed pre and post-reweighting. This is to ensure that the IDI Spine linkage and the subsequent and re-weighting procedure does not bias the variables that is to be compared. The outputs of this operation can be obtained from the `output` folder. 
-
 
 **Unweighted Before-After Analysis**
 1. Start a new R session.
