@@ -2,12 +2,12 @@
 A repeat of the analysis on the effect of social housing on overall well-being of individuals with improved link rates and an additional wave of the GSS survey.
 
 ## Overview
-This analysis repeats and improves on previous work by the Social Investment Agency (SIA) to measure how placement in social housing impacts the wellbeing of people. In November 2018 we released a report **Measuring the wellbeing impacts of public policy: social housing**, and the accompanying GitHub repository **social-housing-and-wellbeing**. The analysis behind this previous report has been repeated with several improvements, including:
+This analysis repeats and improves on previous work by the Social Investment Agency (now the Social Wellbeing Agency) to measure how placement in social housing impacts the wellbeing of people. In November 2018 we released a report **Measuring the wellbeing impacts of public policy: social housing**, and the accompanying GitHub repository **social-housing-and-wellbeing**. The analysis behind this previous report has been repeated with several improvements, including:
 
 * Wellbeing indicators from the 2016 wave of the New Zealand General Social Survey (NZGSS) are used following its addition into the Integrated Data Infrastructure (IDI).
 * Refinements to the spine linking process, using address information to resolve orphan identities, provide a higher link rate for the NZGSS respondents.
 
-Both improvements increase the sample size, reducing uncertainty, and making the results and conclusions more robust. The code from this repository relates to the SIA report **Measuring the impact of social housing placement on wellbeing: Evidence from linked survey and administrative data**.
+Both improvements increase the sample size, reducing uncertainty, and making the results and conclusions more robust. The code from this repository relates to the report **Measuring the impact of social housing placement on wellbeing: Evidence from linked survey and administrative data**.
 
 ## Features
 This repository contains several code features that may be of interest to researchers, even if they do not wish to run the entire analysis:
@@ -34,7 +34,7 @@ This repositry contains all the core code to assemble the data and run the analy
 ## Instructions to run the project
 ### Step A: Create analysis population and variables
 1. Start a new SAS session
-2. Open `sasprogs/si_control.sas`. Go to the yellow datalines and update any of the parameters that need changing. The one that is most likely to change if you are outside the SIA is the `si_proj_schema`. In case the IDI version that you're pointing to needs to be updated, edit the corresponding variables as well- the variables are `idi_version` and `si_idi_dsnname`. Note that the results in the paper are based on IDI_Clean_20181020. If you have made changes save and close the file.
+2. Open `sasprogs/si_control.sas`. Go to the yellow datalines and update any of the parameters that need changing. The one that is most likely to change if you are outside the Agency is the `si_proj_schema`. In case the IDI version that you're pointing to needs to be updated, edit the corresponding variables as well- the variables are `idi_version` and `si_idi_dsnname`. Note that the results in the paper are based on IDI_Clean_20181020. If you have made changes save and close the file.
 3. Open `sasprogs/si_main.sas` and change the `si_source_path` variable to your project folder directory. Once this is done, run the `si_main.sas` script, which will build the datasets that are needed to do the analysis.
 
 ### Step B: Data Preparation & Analysis
@@ -50,5 +50,5 @@ There are 2 distinct streams of analysis for this project-
 2. Open up `rprogs/1_run_analysis_treat_control.R`. This script creates loads up all required libraries and generates all the Before-After analysis results. This analysis does not take into account the survey weights, and compares the group that was housed 12 months before GSS interview to the group housed 15 months after. Bootstrap sampling is used to get confidence intervals around the estimates here. In addition to the main analysis, this code also performs a validation, by comparing the group that was housed 12 months before GSS interview to the group housed 12 months after, and another validation using propensity matched groups.  Additionally, this code also performs regression models for the outcome variables of interest. The outputs of this analysis can be obtained from the `output` folder. 
 
 ## Getting Help
-If you have any questions email info@sia.govt.nz
+If you have any questions email info@swa.govt.nz
 
