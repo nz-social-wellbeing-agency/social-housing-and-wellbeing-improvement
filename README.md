@@ -17,9 +17,14 @@ This repository contains several code features that may be of interest to resear
 * The IDI contains 5 waves of the NZGSS. Due to changes in the survey over time, combining these waves into a single dataset requires some cleaning. The code scripts `si_create_of_gss_variables.sas` contains the core of our methodology to combine these five waves into a single dataset.
 
 ## Dependencies
-It is necessary to have an IDI project if you wish to run the code. Visit the Stats NZ website for more information about this. This analysis has been developed for the IDI_Clean_20181020 refresh of the IDI. As changes in database structure can occur between refreshes, access to, and use of, this refresh should be considered a dependency for the purpose of executing the code as it was intended.
+* It is necessary to have an IDI project if you wish to replicate this work. Visit the Stats NZ website for more information about this.
+* While we have attempted to capture all the code dependencies in this project, several other Agency repositories may be required to replicate this project. These repositories are:
+  * social_investment_analytical_layer (SIAL)
+  * social_investment_data_foundation (SIDF)
+  * SIAtoolbox
+* If the repositories are not available on our GitHub page, they may be archived on our previous GitHub page https://github.com/nz-social-investment-agency. Instructions for the installation of each repository can be found in their respective readme files. Only the SIAL would need to be run prior to this analysis. Any dependency on the SIDF and tool box are via SAS macros and R functions contained in those repositories.
 
-Code dependencies for this repository include the `social_investment_analytical_layer (SIAL)`, the `social_investment_data_foundation (SIDF)`, and the `SIAtoolbox`. Of these, only the SIAL would need to be run prior to this analysis. Please see the SIAL repository for more detail and instructions. Any dependency on the SIDF and tool box are via SAS macros and R functions contained in those repositories.
+This analysis has been developed for the IDI_Clean_20181020 refresh of the IDI. As changes in database structure can occur between refreshes, access to, and use of, this refresh should be considered a dependency for the purpose of executing the code as it was created.
 
 The R code makes use of several publicly available R packages. The version of some of these packages may be important. This analysis was conducted using `dplyr` version 0.7.2, `srvyr` version 0.2.2 and `rlang` version 0.2.1.
 
