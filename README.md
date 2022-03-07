@@ -1,4 +1,4 @@
-# social-housing-and-wellbeing-improvement
+# Social Housing and Wellbeing Improvement
 A repeat of the analysis on the effect of social housing on overall well-being of individuals with improved link rates and an additional wave of the GSS survey.
 
 ## Overview
@@ -53,6 +53,10 @@ There are 2 distinct streams of analysis for this project-
 **Unweighted Before-After Analysis**
 1. Start a new R session.
 2. Open up `rprogs/1_run_analysis_treat_control.R`. This script creates loads up all required libraries and generates all the Before-After analysis results. This analysis does not take into account the survey weights, and compares the group that was housed 12 months before GSS interview to the group housed 15 months after. Bootstrap sampling is used to get confidence intervals around the estimates here. In addition to the main analysis, this code also performs a validation, by comparing the group that was housed 12 months before GSS interview to the group housed 12 months after, and another validation using propensity matched groups.  Additionally, this code also performs regression models for the outcome variables of interest. The outputs of this analysis can be obtained from the `output` folder. 
+
+## Citation
+
+Social Wellbeing Agency (2019). Social housing and wellbeing improvement. Source code. https://github.com/nz-social-wellbeing-agency/social-housing-and-wellbeing-improvement
 
 ## Getting Help
 If you have any questions email info@swa.govt.nz
